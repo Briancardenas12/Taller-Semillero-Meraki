@@ -34,6 +34,23 @@ class HomePage extends CellsPage {
         padding: 1rem;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: #fff;
+        transition: background-color 0.3s;
+      }
+
+      .pokemon-container:nth-child(4n + 1) {
+        background-color: #ffebcd; /* Blanched Almond */
+      }
+
+      .pokemon-container:nth-child(4n + 2) {
+        background-color: #e0ffff; /* Light Cyan */
+      }
+
+      .pokemon-container:nth-child(4n + 3) {
+        background-color: #f0e68c; /* Khaki */
+      }
+
+      .pokemon-container:nth-child(4n + 4) {
+        background-color: #e6e6fa; /* Lavender */
       }
 
       .pokemon-image {
@@ -139,7 +156,7 @@ class HomePage extends CellsPage {
   )}
                   </div>
                   <bbva-button-default
-                    @click=${this.goToEvolution}
+                    @click=${() => this.goToEvolution(pokemon.name)}
                     class="evolutions-button"
                     text="Evoluciones"
                   ></bbva-button-default>
@@ -159,8 +176,8 @@ class HomePage extends CellsPage {
     this.navigate('about');
   }
 
-  goToEvolution() {
-    this.navigate('evolution');
+  goToEvolution(pokemonName) {
+    this.navigate('evolution', { pokemonName });
   }
 }
 
