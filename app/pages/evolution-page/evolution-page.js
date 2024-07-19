@@ -13,8 +13,59 @@ class EvolutionPage extends CellsPage {
   static get properties() {
     return {
       fullName: { type: String },
-      evolutions: { type: String },
+      evolutions: { type: Array },
     };
+  }
+
+  static get styles() {
+    return css`
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+        justify-items: center;
+      }
+
+      .pokemon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+
+      .pokemon-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+      }
+
+      .pokemon-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .pokemon-type {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .pokemon-type span {
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .evolutions-button {
+        margin-top: 1rem;
+      }
+    `;
   }
 
   constructor() {
@@ -79,15 +130,17 @@ class EvolutionPage extends CellsPage {
   }
 
   render() {
-    return html` <demo-app-template data-cells-type="template">
-      <div slot="app-main-content">
-        <h3>Evoluciones</h3>
-        <bbva-button-default active="" @click=${this.gotoGoal}>
-          Back To Home
-        </bbva-button-default>
-        ${this._listPokemonTpl}
-      </div>
-    </demo-app-template>`;
+    return html`
+      <demo-app-template data-cells-type="template">
+        <div slot="app-main-content">
+          <h3>Evoluciones</h3>
+          <bbva-button-default active="" @click=${this.gotoGoal}
+            >Back To Home</bbva-button-default
+          >
+          ${this._listPokemonTpl}
+        </div>
+      </demo-app-template>
+    `;
   }
 
   get _listPokemonTpl() {
@@ -97,23 +150,15 @@ class EvolutionPage extends CellsPage {
     ? this.evolutions.map(
       (pokemon) => html`
                 <div class="pokemon-container">
-                  <bbva-web-card-product class="pokemon-card">
-                    <!-- Imagen del Pokémon -->
-                    <img
-                      class="pokemon-image"
-                      slot="media"
-                      src="${pokemon.image}"
-                      alt="${pokemon.name}"
-                    />
-                    <!-- Nombre del Pokémon -->
-                    <div class="pokemon-name" slot="title">${pokemon.name}</div>
-                    <!-- Tipos del Pokémon -->
-                    <div class="pokemon-type" slot="details">
-                      ${pokemon.types.map(
-    (typeInfo) => html`<span>${typeInfo.type}</span>`
-  )}
-                    </div>
-                  </bbva-web-card-product>
+                  <img
+                    class="pokemon-image"
+                    src="${pokemon.image}"
+                    alt="${pokemon.name}"
+                  />
+                  <div class="pokemon-name">${pokemon.name}</div>
+                  <div class="pokemon-type">
+                    ${pokemon.types.map((type) => html`<span>${type}</span>`)}
+                  </div>
                 </div>
               `
     )
@@ -126,4 +171,5 @@ class EvolutionPage extends CellsPage {
     this.navigate('home');
   }
 }
+
 window.customElements.define(EvolutionPage.is, EvolutionPage);

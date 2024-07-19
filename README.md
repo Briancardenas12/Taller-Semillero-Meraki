@@ -1,6 +1,6 @@
 # Pokémon Web App
 
-Este proyecto es una aplicación web que muestra una lista de Pokémon base (sin evoluciones) y proporciona información sobre ellos, incluyendo su imagen, nombre, peso y tipos. Además, incluye una página "Acerca de mí".
+Este proyecto es una aplicación web que muestra una lista de Pokémon base (sin evoluciones) y proporciona información sobre ellos, incluyendo su imagen, nombre, peso y tipos. Además, otra pagina que muestras las evoluciones de los pokémones de la primera pagina y por útimo incluye una página "Acerca de mí".
 
 ## Tecnologías Utilizadas
 
@@ -16,21 +16,21 @@ Este proyecto es una aplicación web que muestra una lista de Pokémon base (sin
 Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
 
 1. Clona el repositorio:
-    ```sh
-    git clone https://github.com/tu-usuario/pokemon-web-app.git
-    ```
+   ```sh
+   git clone https://github.com/tu-usuario/pokemon-web-app.git
+   ```
 2. Navega al directorio del proyecto:
-    ```sh
-    cd pokemon-web-app
-    ```
+   ```sh
+   cd pokemon-web-app
+   ```
 3. Instala las dependencias:
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 4. Ejecuta la aplicación:
-    ```sh
-    cells app:serve -c dev.js
-    ```
+   ```sh
+   cells app:serve -c dev.js
+   ```
 
 ## Estructura del Proyecto
 
@@ -49,11 +49,20 @@ Este componente obtiene datos de la PokeAPI y filtra los Pokémon base (sin evol
 - Peso
 - Tipos
 
-Además, hay un botón "Evoluciones" que actualmente no tiene funcionalidad implementada.
+Además, hay un botón "Evoluciones".
 
-### AboutmePage
+### EvolutionPage
 
-Este componente muestra información personal, incluyendo un nombre completo y un botón para regresar a la página principal.
+Este componente obtiene datos de la PokeAPI y filtra las evoluciones de los pokemones. La información mostrada incluye:
+
+- Imagen
+- Nombre
+- Peso
+- Tipos
+
+### AboutPage
+
+Este componente muestra información personal, y un botón para regresar a la página principal.
 
 ## Estilos
 
@@ -62,5 +71,3 @@ Los estilos están definidos utilizando CSS dentro de los componentes LitElement
 ## Uso
 
 Para usar la aplicación, simplemente abre la página principal (`home-page`) para ver la lista de Pokémon. Puedes hacer clic en "About me" para navegar a la página "Acerca de mí" y luego regresar utilizando el botón "Regresar".
-
-
